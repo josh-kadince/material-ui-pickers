@@ -66,9 +66,9 @@ export const CalendarHeader: React.SFC<CalendarHeaderProps> = ({
             <div onClick={onYearClick}>
               {'Year'}
             </div>
-            <Typography align="center" variant="body1">
-              {utils.getCalendarHeaderText(currentMonth)}
-            </Typography>
+            {/*<Typography align="center" variant="body1">*/}
+              {/*{utils.getCalendarHeaderText(currentMonth)}*/}
+            {/*</Typography>*/}
           </React.Fragment>
         </SlideTransition>
 
