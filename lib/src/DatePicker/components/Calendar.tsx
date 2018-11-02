@@ -37,6 +37,7 @@ export interface CalendarProps
   renderDay?: RenderDay;
   allowKeyboardControl?: boolean;
   shouldDisableDate?: (day: MaterialUiPickersDate) => boolean;
+  onYearClick?: () => void;
 }
 
 export interface CalendarState {
@@ -62,6 +63,7 @@ export class Calendar extends React.Component<CalendarProps, CalendarState> {
     utils: PropTypes.object.isRequired,
     allowKeyboardControl: PropTypes.bool,
     innerRef: PropTypes.any,
+    onYearClick: PropTypes.func,
   };
 
   public static defaultProps = {
@@ -275,7 +277,7 @@ export class Calendar extends React.Component<CalendarProps, CalendarState> {
 
   public render() {
     const { currentMonth, slideDirection } = this.state;
-    const { classes, utils, allowKeyboardControl } = this.props;
+    const { classes, utils, allowKeyboardControl, onYearClick } = this.props;
 
     return (
       <React.Fragment>
@@ -291,6 +293,7 @@ export class Calendar extends React.Component<CalendarProps, CalendarState> {
           rightArrowIcon={this.props.rightArrowIcon}
           disablePrevMonth={this.shouldDisablePrevMonth()}
           disableNextMonth={this.shouldDisableNextMonth()}
+          onYearClick={onYearClick}
         />
 
         <SlideTransition

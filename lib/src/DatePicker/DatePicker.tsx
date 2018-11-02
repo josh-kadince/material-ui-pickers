@@ -153,6 +153,7 @@ export class DatePicker extends React.PureComponent<
             renderDay={renderDay}
             shouldDisableDate={shouldDisableDate}
             allowKeyboardControl={allowKeyboardControl}
+            onYearClick={this.openYearSelection}
           />
         )}
       </>
