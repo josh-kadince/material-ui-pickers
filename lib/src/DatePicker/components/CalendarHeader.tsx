@@ -23,6 +23,7 @@ export interface CalendarHeaderProps
   disablePrevMonth?: boolean;
   disableNextMonth?: boolean;
   slideDirection: SlideDirection;
+  onYearClick?: () => void;
 }
 
 export const CalendarHeader: React.SFC<CalendarHeaderProps> = ({
@@ -36,6 +37,7 @@ export const CalendarHeader: React.SFC<CalendarHeaderProps> = ({
   disableNextMonth,
   utils,
   slideDirection,
+  onYearClick,
 }) => {
   const rtl = theme.direction === 'rtl';
 
@@ -60,9 +62,14 @@ export const CalendarHeader: React.SFC<CalendarHeaderProps> = ({
           transKey={currentMonth.toString()}
           className={classes.transitionContainer}
         >
-          <Typography align="center" variant="body1">
-            {utils.getCalendarHeaderText(currentMonth)}
-          </Typography>
+          <React.Fragment>
+            <div onClick={onYearClick}>
+              {'Year'}
+            </div>
+            <Typography align="center" variant="body1">
+              {utils.getCalendarHeaderText(currentMonth)}
+            </Typography>
+          </React.Fragment>
         </SlideTransition>
 
         <IconButton
@@ -101,6 +108,7 @@ export const CalendarHeader: React.SFC<CalendarHeaderProps> = ({
   utils: PropTypes.object.isRequired,
   slideDirection: PropTypes.oneOf(['right', 'left']).isRequired,
   innerRef: PropTypes.any,
+  onYearClick: PropTypes.func,
 };
 
 CalendarHeader.defaultProps = {
